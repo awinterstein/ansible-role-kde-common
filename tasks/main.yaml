@@ -1,0 +1,57 @@
+---
+- name: Install Yakuake, Kate
+  apt: name={{item}} state=installed
+  with_items:
+    - yakuake
+    - kate
+  become: true
+- name: Kate - Set remove spaces
+  lineinfile:
+    destfile: "{{homedir}}/.config/katepartrc"
+    regexp: 'Remove Spaces='
+    insertafter: '^[Document]'
+    line: "Remove Spaces=2"
+- name: Kate - Append newline at end of file
+  lineinfile:
+    destfile: "{{homedir}}/.config/katepartrc"
+    regexp: 'Newline at End of File='
+    insertafter: '^[Document]'
+    line: "Newline at End of File=true"
+- name: Kate - Show word wrap maker
+  lineinfile:
+    destfile: "{{homedir}}/.config/katepartrc"
+    regexp: 'Word Wrap Marker='
+    insertafter: '^[Document]'
+    line: "Word Wrap Marker=true"
+- name: Kwrite - Show full path in title bar
+  lineinfile:
+    destfile: "{{homedir}}/.config/kwriterc"
+    regexp: 'ShowPath='
+    insertafter: '^[General Options]'
+    line: "ShowPath=true"
+- name: Disable automatic screen locking (category)
+  lineinfile:
+    destfile: "{{homedir}}/.config/kscreenlockerrc"
+    line: "[Daemon]"
+- name: Disable automatic screen locking
+  lineinfile:
+    destfile: "{{homedir}}/.config/kscreenlockerrc"
+    regexp: '^Autolock='
+    insertafter: "[Daemon]"
+    line: "Autolock=false"
+- name: Copy bashrc
+  copy:
+    src: bashrc
+    dest: "{{homedir}}/.bashrc"
+- name: Copy keyboard configuration
+  copy:
+    src: kxkbrc
+    dest: "{{homedir}}/.config/kxkbrc"
+- name: Copy configuration file of Yakuake
+  copy:
+    src: yakuakerc
+    dest: "{{homedir}}/.config/yakuakerc"
+- name: Copy file for not showing notifcation at start of Yakuake
+  copy:
+    src: yakuake.notifyrc
+    dest: "{{homedir}}/.config/yakuake.notifyrc"
