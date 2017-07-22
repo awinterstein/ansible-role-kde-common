@@ -5,6 +5,11 @@
     - yakuake
     - kate
   become: true
+- name: Copy default configuration file for Kate
+  copy:
+    src: katepartrc
+    dest: "{{homedir}}/.config/katepartrc"
+    force: no
 - name: Kate - Set remove spaces
   lineinfile:
     destfile: "{{homedir}}/.config/katepartrc"
@@ -23,6 +28,11 @@
     regexp: 'Word Wrap Marker='
     insertafter: '^[Document]'
     line: "Word Wrap Marker=true"
+- name: Copy default configuration file for Kwrite
+  copy:
+    src: kwriterc
+    dest: "{{homedir}}/.config/kwriterc"
+    force: no
 - name: Kwrite - Show full path in title bar
   lineinfile:
     destfile: "{{homedir}}/.config/kwriterc"
