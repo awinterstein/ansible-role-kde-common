@@ -65,3 +65,7 @@
   copy:
     src: yakuake.notifyrc
     dest: "{{homedir}}/.config/yakuake.notifyrc"
+- name: Copy file for automatically starting Yakuake
+  copy:
+    src: yakuake.desktop
+    dest: "{{homedir}}/.config/autostart/yakuake.desktop"
