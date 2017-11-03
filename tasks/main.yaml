@@ -89,6 +89,11 @@
   copy:
     src: yakuake.notifyrc
     dest: "{{homedir}}/.config/yakuake.notifyrc"
+- name: Make sure that the autostart directory exists
+  file:
+    path: "{{homedir}}/.config/autostart"
+    state: directory
+    recurse: yes
 - name: Copy file for automatically starting Yakuake
   copy:
     src: yakuake.desktop
