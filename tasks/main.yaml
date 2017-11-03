@@ -23,6 +23,17 @@
     regexp: 'email = '
     insertafter: '^[user]'
     line: "\temail = {{usermail}}"
+- name: Make sure that category 'push' exists in Git config
+  lineinfile:
+    create: yes
+    destfile: "{{homedir}}/.gitconfig"
+    line: '[push]'
+- name: Set push to simple for Git
+  lineinfile:
+    destfile: "{{homedir}}/.gitconfig"
+    regexp: 'default = '
+    insertafter: '^[user]'
+    line: "\tdefault = simple"
 - name: Install Yakuake, Kate
   apt: name={{item}} state=installed
   with_items:
