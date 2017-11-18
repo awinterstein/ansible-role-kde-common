@@ -11,6 +11,13 @@
     - yakuake
     - kate
   become: true
+- name: Install additional KDE software and helpers
+  apt: name={{item}} state=installed
+  with_items:
+    - ktexteditorpreviewplugin
+    - kmarkdownwebview
+  become: true
+
 - name: Copy default configuration file for Kate
   copy:
     src: katepartrc
