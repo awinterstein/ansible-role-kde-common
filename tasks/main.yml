@@ -17,7 +17,6 @@
     - ktexteditorpreviewplugin
     - kmarkdownwebview
   become: true
-
 - name: Copy default configuration file for Kate
   copy:
     src: katepartrc
@@ -41,6 +40,30 @@
     regexp: 'Word Wrap Marker='
     insertafter: '^[Document]'
     line: "Word Wrap Marker=true"
+- name: Kate - Show line numbers
+  lineinfile:
+    destfile: "{{homedir}}/.config/katepartrc"
+    regexp: 'Line Numbers='
+    insertafter: '^[View]'
+    line: "Line Numbers=true"
+- name: Kate - Show line modification markers
+  lineinfile:
+    destfile: "{{homedir}}/.config/katepartrc"
+    regexp: 'Line Modification='
+    insertafter: '^[View]'
+    line: "Line Modification=true"
+- name: Kate - Animate bracket matching
+  lineinfile:
+    destfile: "{{homedir}}/.config/katepartrc"
+    regexp: 'Animate Bracket Matching='
+    insertafter: '^[Renderer]'
+    line: "Animate Bracket Matching=true"
+- name: Kate - Show spaces
+  lineinfile:
+    destfile: "{{homedir}}/.config/katepartrc"
+    regexp: 'Show Spaces='
+    insertafter: '^[Document]'
+    line: "Show Spaces=true"
 - name: Copy default configuration file for Kwrite
   copy:
     src: kwriterc
