@@ -5,12 +5,13 @@
     - git-gui
     - gitk
   become: true
-- name: Install Yakuake, Kate, Okteta
+- name: Install Yakuake, Kate, Okteta, Kompare
   apt: name={{item}} state=installed
   with_items:
     - yakuake
     - kate
     - okteta
+    - kompare
   become: true
 - name: Install additional KDE software and helpers
   apt: name={{item}} state=installed
