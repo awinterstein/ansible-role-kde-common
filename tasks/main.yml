@@ -18,6 +18,7 @@
   with_items:
     - ktexteditorpreviewplugin
     - kmarkdownwebview
+    - dolphin-plugins
   become: true
 - name: Copy default configuration file for Kate
   copy:
@@ -87,6 +88,12 @@
     regexp: '^Autolock='
     insertafter: "[Daemon]"
     line: "Autolock=false"
+- name: Enable git and subversion plugins for Dolphin
+  ini_file:
+    path: "{{homedir}}/.config/dolphinrc"
+    section: VersionControl
+    option: enabledPlugins
+    value: "Git,Subversion"
 - name: Copy bashrc
   copy:
     src: bashrc
