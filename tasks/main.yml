@@ -4,6 +4,7 @@
   with_items:
     - git-gui
     - gitk
+    - git-cola
   become: true
 - name: Install Yakuake, Kate, Okteta, Kompare
   apt: name={{item}} state=installed
@@ -94,6 +95,18 @@
     section: VersionControl
     option: enabledPlugins
     value: "Git,Subversion"
+- name: Select editor for git-cola
+  ini_file:
+    path: "{{homedir}}/.gitconfig"
+    section: gui
+    option: editor
+    value: "kwrite"
+- name: Select diff font for git-cola
+  ini_file:
+    path: "{{homedir}}/.gitconfig"
+    section: cola
+    option: fontdiff
+    value: "Hack,10,-1,0,50,0,0,0,0,0"
 - name: Copy bashrc
   copy:
     src: bashrc
