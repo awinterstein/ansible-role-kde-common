@@ -20,6 +20,7 @@
     - ktexteditorpreviewplugin
     - kmarkdownwebview
     - dolphin-plugins
+    - filelight
   become: true
 - name: Copy default configuration file for Kate
   copy:
