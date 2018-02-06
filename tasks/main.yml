@@ -133,3 +133,8 @@
   copy:
     src: yakuake.desktop
     dest: "{{homedir}}/.config/autostart/yakuake.desktop"
+- name: Disable powermanagement
+  copy:
+    src: "powermanagementprofilesrc-disabled"
+    dest: "{{homedir}}/.config/powermanagementprofilesrc"
+  when: disable_powermanagement == true
