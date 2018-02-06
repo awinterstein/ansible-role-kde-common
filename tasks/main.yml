@@ -138,3 +138,10 @@
     src: "powermanagementprofilesrc-disabled"
     dest: "{{homedir}}/.config/powermanagementprofilesrc"
   when: disable_powermanagement == true
+- name: Disable compositing
+  ini_file:
+    path: "{{homedir}}/.config/kwinrc"
+    section: Compositing
+    option: Enabled
+    value: "false"
+  when: disable_compositing == true

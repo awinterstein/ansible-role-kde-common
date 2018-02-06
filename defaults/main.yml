@@ -1,1 +1,2 @@
 disable_powermanagement: true
+disable_compositing: true
