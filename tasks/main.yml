@@ -62,6 +62,12 @@
     regexp: 'Show Spaces='
     insertafter: '^[Document]'
     line: "Show Spaces=true"
+- name: Kate - Set color scheme
+  ini_file:
+    path: "{{homedir}}/.config/katepartrc"
+    section: Renderer
+    option: Schema
+    value: "KDE"
 - name: Copy default configuration file for Kwrite
   copy:
     src: kwriterc
