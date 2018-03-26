@@ -10,8 +10,8 @@
 - name: Install additional KDE software and helpers
   apt: name={{item}} state=installed
   with_items:
-    - ktexteditorpreviewplugin
-    - kmarkdownwebview
+    #- ktexteditorpreviewplugin  # enable, when kubuntu 18.04 was released
+    #- kmarkdownwebview
     - dolphin-plugins
     - filelight
   become: true
