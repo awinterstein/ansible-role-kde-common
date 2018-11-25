@@ -111,6 +111,7 @@
   copy:
     src: kxkbrc
     dest: "{{homedir}}/.config/kxkbrc"
+
 - name: Copy configuration file of Yakuake
   copy:
     src: yakuakerc
@@ -119,6 +120,13 @@
   copy:
     src: yakuake.notifyrc
     dest: "{{homedir}}/.config/yakuake.notifyrc"
+- name: Open yakuake on Caps Lock
+  ini_file:
+    path: "{{homedir}}/.config/kglobalshortcutsrc"
+    section: yakuake
+    option: toggle-window-state
+    value: "CapsLock,F12,Yakuake einfahren/ausfahren"
+
 - name: Make sure that the autostart directory exists
   file:
     path: "{{homedir}}/.config/autostart"
