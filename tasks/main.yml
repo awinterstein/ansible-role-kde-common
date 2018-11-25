@@ -15,6 +15,14 @@
     - dolphin-plugins
     - filelight
   become: true
+
+- name: Enable single click for KDE
+  ini_file:
+    path: "{{homedir}}/.kde/share/config/kdeglobals"
+    section: "KDE"
+    option: "SingleClick"
+    value: "true"
+
 - name: Copy default configuration file for Kate
   copy:
     src: katepartrc
