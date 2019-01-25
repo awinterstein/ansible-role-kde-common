@@ -103,10 +103,6 @@
     section: VersionControl
     option: enabledPlugins
     value: "Git,Subversion"
-- name: Copy bashrc
-  copy:
-    src: bashrc
-    dest: "{{homedir}}/.bashrc"
 - name: Copy keyboard configuration
   copy:
     src: kxkbrc
