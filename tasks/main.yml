@@ -1,20 +1,19 @@
 ---
 - name: Install Yakuake, Kate, Okteta, Kompare
-  apt: name={{item}} state=installed
-  with_items:
-    - yakuake
-    - kate
-    - okteta
-    - kompare
+  apt:
+    name: ['yakuake', 'kate', 'okteta', 'kompare']
+    state: present
   become: true
+
 - name: Install additional KDE software and helpers
-  apt: name={{item}} state=installed
-  with_items:
-    #- ktexteditorpreviewplugin  # enable, when kubuntu 18.04 was released
-    #- kmarkdownwebview
-    - dolphin-plugins
-    - filelight
+  apt:
+    name: ['dolphin-plugins', 'filelight']
+    state: present
   become: true
+
+  # Additional packages that are not (yet) available
+  # - ktexteditorpreviewplugin
+  # - kmarkdownwebview
 
 - name: Enable single click for KDE
   ini_file:
