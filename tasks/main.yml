@@ -22,6 +22,11 @@
     option: "SingleClick"
     value: "true"
 
+- name: Copy Kate color schemes file
+  copy:
+    src: kateschemarc
+    dest: "{{homedir}}/.config/kateschemarc"
+
 - name: Copy default configuration file for Kate
   copy:
     src: katepartrc
