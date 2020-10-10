@@ -94,6 +94,13 @@
     option: Autolock
     value: "false"
 
+- name: Disable KDE session restore
+  ini_file:
+    path: "{{homedir}}/.config/ksmserverrc"
+    section: General
+    option: loginMode
+    value: "emptySession"
+
 - name: Enable git and subversion plugins for Dolphin
   ini_file:
     path: "{{homedir}}/.config/dolphinrc"
