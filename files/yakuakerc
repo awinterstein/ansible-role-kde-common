@@ -43,4 +43,5 @@ view-full-screen=Ctrl+Shift+F11
 [Window]
 DynamicTabTitles=true
 KeepOpen=false
+ShowSystrayIcon=false
 Width=80
