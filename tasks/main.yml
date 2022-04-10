@@ -21,6 +21,7 @@
     section: "KDE"
     option: "SingleClick"
     value: "true"
+    no_extra_spaces: "yes"
 
 - name: Copy Kate color schemes file
   copy:
@@ -80,6 +81,7 @@
     section: Renderer
     option: Schema
     value: "KDE"
+    no_extra_spaces: "yes"
 - name: Copy default configuration file for Kwrite
   copy:
     src: kwriterc
@@ -98,6 +100,7 @@
     section: Daemon
     option: Autolock
     value: "false"
+    no_extra_spaces: "yes"
 
 - name: Disable KDE session restore
   ini_file:
@@ -105,6 +108,7 @@
     section: General
     option: loginMode
     value: "emptySession"
+    no_extra_spaces: "yes"
 
 - name: Enable git and subversion plugins for Dolphin
   ini_file:
@@ -112,6 +116,7 @@
     section: VersionControl
     option: enabledPlugins
     value: "Git,Subversion"
+    no_extra_spaces: "yes"
 - name: Copy keyboard configuration
   copy:
     src: kxkbrc
@@ -131,6 +136,7 @@
     section: yakuake
     option: toggle-window-state
     value: "CapsLock,F12,Yakuake einfahren/ausfahren"
+    no_extra_spaces: "yes"
 
 - name: Make sure that the autostart directory exists
   file:
@@ -152,6 +158,7 @@
     section: Compositing
     option: Enabled
     value: "false"
+    no_extra_spaces: "yes"
   when: disable_compositing == true
 - name: Copy autostart scrip for adding the default SSH key
   copy:
