@@ -17,7 +17,7 @@
 
 - name: Enable single click for KDE
   ini_file:
-    path: "{{ homedir }}/.kde/share/config/kdeglobals"
+    path: "{{ ansible_env.HOME }}/.kde/share/config/kdeglobals"
     section: "KDE"
     option: "SingleClick"
     value: "true"
@@ -26,66 +26,66 @@
 - name: Copy Kate color schemes file
   copy:
     src: kateschemarc
-    dest: "{{ homedir }}/.config/kateschemarc"
+    dest: "{{ ansible_env.HOME }}/.config/kateschemarc"
 
 - name: Copy default configuration file for Kate
   copy:
     src: katepartrc
-    dest: "{{ homedir }}/.config/katepartrc"
+    dest: "{{ ansible_env.HOME }}/.config/katepartrc"
     force: no
 
 - name: Kate - Set remove spaces
   lineinfile:
-    destfile: "{{ homedir }}/.config/katepartrc"
+    destfile: "{{ ansible_env.HOME }}/.config/katepartrc"
     regexp: 'Remove Spaces='
     insertafter: '^[Document]'
     line: "Remove Spaces=2"
 
 - name: Kate - Append newline at end of file
   lineinfile:
-    destfile: "{{ homedir }}/.config/katepartrc"
+    destfile: "{{ ansible_env.HOME }}/.config/katepartrc"
     regexp: 'Newline at End of File='
     insertafter: '^[Document]'
     line: "Newline at End of File=true"
 
 - name: Kate - Show word wrap maker
   lineinfile:
-    destfile: "{{ homedir }}/.config/katepartrc"
+    destfile: "{{ ansible_env.HOME }}/.config/katepartrc"
     regexp: 'Word Wrap Marker='
     insertafter: '^[Document]'
     line: "Word Wrap Marker=true"
 
 - name: Kate - Show line numbers
   lineinfile:
-    destfile: "{{ homedir }}/.config/katepartrc"
+    destfile: "{{ ansible_env.HOME }}/.config/katepartrc"
     regexp: 'Line Numbers='
     insertafter: '^[View]'
     line: "Line Numbers=true"
 
 - name: Kate - Show line modification markers
   lineinfile:
-    destfile: "{{ homedir }}/.config/katepartrc"
+    destfile: "{{ ansible_env.HOME }}/.config/katepartrc"
     regexp: 'Line Modification='
     insertafter: '^[View]'
     line: "Line Modification=true"
 
 - name: Kate - Animate bracket matching
   lineinfile:
-    destfile: "{{ homedir }}/.config/katepartrc"
+    destfile: "{{ ansible_env.HOME }}/.config/katepartrc"
     regexp: 'Animate Bracket Matching='
     insertafter: '^[Renderer]'
     line: "Animate Bracket Matching=true"
 
 - name: Kate - Show spaces
   lineinfile:
-    destfile: "{{ homedir }}/.config/katepartrc"
+    destfile: "{{ ansible_env.HOME }}/.config/katepartrc"
     regexp: 'Show Spaces='
     insertafter: '^[Document]'
     line: "Show Spaces=true"
 
 - name: Kate - Set color scheme
   ini_file:
-    path: "{{ homedir }}/.config/katepartrc"
+    path: "{{ ansible_env.HOME }}/.config/katepartrc"
     section: Renderer
     option: Schema
     value: "KDE"
@@ -94,19 +94,19 @@
 - name: Copy default configuration file for Kwrite
   copy:
     src: kwriterc
-    dest: "{{ homedir }}/.config/kwriterc"
+    dest: "{{ ansible_env.HOME }}/.config/kwriterc"
     force: no
 
 - name: Kwrite - Show full path in title bar
   lineinfile:
-    destfile: "{{ homedir }}/.config/kwriterc"
+    destfile: "{{ ansible_env.HOME }}/.config/kwriterc"
     regexp: 'ShowPath='
     insertafter: '^[General Options]'
     line: "ShowPath=true"
 
 - name: Disable automatic screen locking
   ini_file:
-    path: "{{ homedir }}/.config/kscreenlockerrc"
+    path: "{{ ansible_env.HOME }}/.config/kscreenlockerrc"
     section: Daemon
     option: Autolock
     value: "false"
@@ -114,7 +114,7 @@
 
 - name: Disable KDE session restore
   ini_file:
-    path: "{{ homedir }}/.config/ksmserverrc"
+    path: "{{ ansible_env.HOME }}/.config/ksmserverrc"
     section: General
     option: loginMode
     value: "emptySession"
@@ -122,7 +122,7 @@
 
 - name: Enable git and subversion plugins for DolphDisablein
   ini_file:
-    path: "{{ homedir }}/.config/dolphinrc"
+    path: "{{ ansible_env.HOME }}/.config/dolphinrc"
     section: VersionControl
     option: enabledPlugins
     value: "Git,Subversion"
@@ -131,21 +131,21 @@
 - name: Copy keyboard configuration
   copy:
     src: kxkbrc
-    dest: "{{ homedir }}/.config/kxkbrc"
+    dest: "{{ ansible_env.HOME }}/.config/kxkbrc"
 
 - name: Copy configuration file of Yakuake
   copy:
     src: yakuakerc
-    dest: "{{ homedir }}/.config/yakuakerc"
+    dest: "{{ ansible_env.HOME }}/.config/yakuakerc"
 
 - name: Copy file for not showing notifcation at start of Yakuake
   copy:
     src: yakuake.notifyrc
-    dest: "{{ homedir }}/.config/yakuake.notifyrc"
+    dest: "{{ ansible_env.HOME }}/.config/yakuake.notifyrc"
 
 - name: Open yakuake on Caps Lock
   ini_file:
-    path: "{{ homedir }}/.config/kglobalshortcutsrc"
+    path: "{{ ansible_env.HOME }}/.config/kglobalshortcutsrc"
     section: yakuake
     option: toggle-window-state
     value: "CapsLock,F12,Yakuake einfahren/ausfahren"
@@ -153,24 +153,24 @@
 
 - name: Make sure that the autostart directory exists
   file:
-    path: "{{ homedir }}/.config/autostart"
+    path: "{{ ansible_env.HOME }}/.config/autostart"
     state: directory
     recurse: yes
 
 - name: Copy file for automatically starting Yakuake
   copy:
     src: yakuake.desktop
-    dest: "{{ homedir }}/.config/autostart/yakuake.desktop"
+    dest: "{{ ansible_env.HOME }}/.config/autostart/yakuake.desktop"
 
 - name: Disable powermanagement
   copy:
     src: "powermanagementprofilesrc-disabled"
-    dest: "{{ homedir }}/.config/powermanagementprofilesrc"
+    dest: "{{ ansible_env.HOME }}/.config/powermanagementprofilesrc"
   when: disable_powermanagement == true
 
 - name: Disable compositing
   ini_file:
-    path: "{{ homedir }}/.config/kwinrc"
+    path: "{{ ansible_env.HOME }}/.config/kwinrc"
     section: Compositing
     option: Enabled
     value: "false"
@@ -180,5 +180,5 @@
 - name: Copy autostart scrip for adding the default SSH key
   copy:
     src: ssh-add
-    dest: ~/.config/autostart-scripts/ssh-add
+    dest: "{{ ansible_env.HOME }}/.config/autostart-scripts/ssh-add"
     mode: 0755
